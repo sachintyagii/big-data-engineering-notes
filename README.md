@@ -23,6 +23,7 @@ Hadoop provides 3 things
 > In hadoop we use various tools like pig for data cleaning, hive for querying, mahout for machine learning, sqoop for data ingestion.
 > But, with spark we just need to learn only one style of writing the code and all the things like cleaning, quering, ML, data ingestion can happen with that.
 
-> The basic unit which holds data in spark is called as RDD (Resilient Distributed Dataset).
+## RDD (Resilient Distributed Dataset)
+> The basic unit which holds data in spark is called as RDD.
 > RDD is nothing but in-memory distributed collection.
 ![This is an image](spark_rdd_cluster_mode.png)
