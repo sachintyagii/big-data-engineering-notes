@@ -27,3 +27,9 @@ Hadoop provides 3 things
 > The basic unit which holds data in spark is called as RDD.
 > RDD is nothing but in-memory distributed collection.
 ![This is an image](spark_rdd_cluster_mode.png)
+
+### RDDs are :-
+- Distributed in memory (as shown in above image)
+- Resilient - if we lose a RDD then we can recover it back. RDD is resilient to failure or fault tolerance.
+- RDD1 --transformation1--> RDD2 --transformation2--> RDD3 - if RDD3 is lost then it will check for its parent RDD using the lineage graph, & it will quickly apply transformation on parent RDD which is RDD2 here.
+- Immutable - once we load RDD with data the data can not be changed. RDDs are immutable to be resilient or fault tolerance.
