@@ -30,6 +30,22 @@ Hadoop provides 3 things
 
 ### RDDs are :-
 - Distributed in memory (as shown in above image)
-- Resilient - if we lose a RDD then we can recover it back. RDD is resilient to failure or fault tolerance.
-- RDD1 --transformation1--> RDD2 --transformation2--> RDD3 - if RDD3 is lost then it will check for its parent RDD using the lineage graph, & it will quickly apply transformation on parent RDD which is RDD2 here.
+- Resilient - if we lose a RDD then we can recover it back. RDD is resilient to failure or fault tolerance.\
+RDD1 --transformation1--> RDD2 --transformation2--> RDD3 - if RDD3 is lost then it will check for its parent RDD using the lineage graph (DAG), & it will quickly apply transformation on parent RDD which is RDD2 here.
 - Immutable - once we load RDD with data the data can not be changed. RDDs are immutable to be resilient or fault tolerance.
+
+#### Basic Program in Spark
+Step 1: rdd1 = load file1 from hdfs -> transformation\
+Step 2: rdd2 = rdd1.map() -> transformation\
+Step 3: rdd3 = rdd2.filter() -> transformation\
+Step 4: rdd3.collect() -> action
+
+##### There are two kinds of operations in spark
+1. Transformations (these are lazy)
+2. Actions (these are not lazy)
+
+>Whenever we call transformations an entry to the execution plan is added.
+
+>Transformations are lazy that means when we execute step1, step2, step3 no actual computation has happened but as diagram will be created in backend.
+>This diagram is technically called as DAG (Directed Acyclic Graph).
+> A DAG is generated when we compute spark statement. Execution happens when action is encountered before that only entries are made into DAG.
